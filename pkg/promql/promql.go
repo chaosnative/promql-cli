@@ -50,6 +50,9 @@ func CreateClientWithAuth(host string, authCfg config.Authorization, tlsCfg conf
 	}
 	cmmnConfig := config.HTTPClientConfig{
 		TLSConfig: tlsCfg,
+		ProxyConfig: config.ProxyConfig{
+			ProxyFromEnvironment: true,
+		},
 	}
 	rt, err := config.NewRoundTripperFromConfig(cmmnConfig, "promql")
 	if err != nil {
