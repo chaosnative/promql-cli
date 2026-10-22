@@ -24,6 +24,9 @@ setup: ## Setup build/artifact paths.
 clean: ## Cleanup build dir
 		rm -rf ./build/*
 
+test: ## Run unit tests with a coverage profile (consumed by the centralised coverage pipeline)
+		go test ./... -coverprofile=coverage.out -covermode=atomic -v
+
 build-all: ## Build binaries for linux and macOS
 		OS="darwin" ARCH="amd64" make build
 		OS="linux" ARCH="amd64" make build
